@@ -1,0 +1,18 @@
+# prod
+antlr4-python3-runtime==4.10
+build
+cplot
+docutils==0.19
+matplotlib==3.5.2
+nltk==3.8
+numpy==1.23.5
+sympy==1.11
+typing-extensions==4.4.0
+
+# dev
+flake8
+isort
+pyright
+pytest
+pytest-cov
+pytest-xdist
