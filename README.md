@@ -1,28 +1,40 @@
-# SymPy Beta
-![](https://img.shields.io/github/license/eagleoflqj/sympy_beta)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/eagleoflqj/sympy_beta.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/eagleoflqj/sympy_beta/alerts/)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/eagleoflqj/sympy_beta.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/eagleoflqj/sympy_beta/context:javascript)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/eagleoflqj/sympy_beta.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/eagleoflqj/sympy_beta/context:python)
+### DEMO SYS CALS
 
-Try me at https://sympy-beta.vercel.app!
+# Run locally
 
-SymPy Beta is a fork of [SymPy Gamma](https://github.com/sympy/sympy_gamma). The purpose of this project is to run a [SymPy](https://github.com/sympy/sympy)-powered, [Wolfram|Alpha](https://www.wolframalpha.com)-like answer engine totally in your browser, without backend computation.
+```sh
+pnpm run dev
+```
 
-Originally,  
-SymPy Beta = SymPy Gamma + (Pyodide - GAE - django) + (Vue + NaiveUI - jQuery)
+Then open http://localhost:5173/.
 
-But as development continues,
-it goes [far beyond](doc/changelog.md) SymPy **Gamma**,
-although still needs to learn much from the respected model Wolfram|**Alpha**.
+> **_NOTE:_** This doesn't work if you want to test PWA.
+> You should "[deploy](deploy.md)" it locally.
 
-That's why I name it SymPy **Beta**.
+Hot-reload works for UI changes,
+but sometimes you have to refresh to make sure it's in a clean state.
 
-SymPy Beta is **NOT** an official SymPy project.
-# Document
-See [doc](doc).
-# License
-AGPL 3.0 or later, with the exception of
-* kernel/gamma derived from SymPy Gamma, which remains 3-clause BSD License from SymPy Gamma
-* src/js/{factordiagram, plot}.js derived from SymPy Gamma, same above
-* public/shell.js and src/views/Terminal.vue derived from Pyodide, which remain MPL-2.0
-* kernel/extension/elementary/num2words.py derived from [num2words](https://github.com/savoirfairelinux/num2words), which switched from LGPL-2.1 to GPL-3.0-or-later in order to be compatible with AGPL
+If you change kernel, you have to re-generate kernel wheel and refresh.
+
+# Directory walk through
+
+SymPy Beta is an SPA, and [index.html](../index.html) is that single page.
+Except for some CDN imports that should be replaced in the future, it references [main.js](../src/main.js) to provide functionalities.
+
+## src
+
+[src](../src) contains front end code.
+
+The structure doesn't need explaining if you have basic knowledge of Vue,
+except for, [components/contents](../src/components/contents) contains dynamic components that are loaded by [BetaContainer](../src/components/BetaContainer.vue) according to what kind of card is shown,
+while [components](../src/components) contains static components.
+
+## kernel
+
+[kernel](../kernel) contains kernel code.
+
+New code should be covered 100% in [test](../kernel/test), with the exception of `Exception`.
+
+## scripts
+
+[scripts](../scripts) contains cross-platform node scripts for maintaining purpose.
