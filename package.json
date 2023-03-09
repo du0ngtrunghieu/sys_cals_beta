@@ -9,6 +9,7 @@
     "email": "hieu.dt@3si.vn",
     "url": "https://github.com/du0ngtrunghieu"
   },
+  "homepage": "https://github.com/du0ngtrunghieu/sys_cals_beta",
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "worker": "rollup -c rollup.worker-config.mjs",
